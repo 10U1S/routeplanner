@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { Route, Difficulty, RouteCategory } from "@/types";
+import { Difficulty, RouteCategory } from "@/types";
 import { getRoutes, addRoute } from "@/lib/routes-data";
 
 // GET /api/routes — gibt die gesamte Liste zurück

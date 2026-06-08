@@ -47,11 +47,6 @@ function toRoute(r: StoredRoute): Route {
   return { ...r, imageUrl: undefined };
 }
 
-function toStoredRoute(r: Route): StoredRoute {
-  const { imageUrl, ...rest } = r;
-  return rest as StoredRoute;
-}
-
 export function getRoutes(): Route[] {
   return loadRoutes().map(toRoute);
 }

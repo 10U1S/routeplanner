@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { Route, RouteCategory } from "@/types";
 
 interface FilterBarProps {

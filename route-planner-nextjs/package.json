@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "postinstall": "prisma generate",
+    "db:setup": "prisma migrate deploy && npm run prisma:seed",
     "prisma": "prisma",
     "prisma:seed": "tsx prisma/seed.ts"
   },

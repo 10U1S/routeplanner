@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { Route, RouteCategory } from "@/types";
 import { getRoutes, createRoute, updateRoute, deleteRoute } from "@/app/actions";
@@ -20,12 +20,6 @@ export default function RoutesClient({ initialRoutes = [] }: { initialRoutes?: R
   const [editingRoute, setEditingRoute] = useState<Route | null>(null);
   const [showForm, setShowForm] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    if (categoryParam) {
-      setSelectedCategory(categoryParam);
-    }
-  }, [categoryParam]);
 
   const refreshRoutes = async () => {
     setIsLoading(true);

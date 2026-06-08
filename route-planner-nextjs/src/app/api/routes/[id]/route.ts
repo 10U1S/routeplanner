@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { Route } from "@/types";
 import { getRoute, updateRoute, deleteRoute } from "@/lib/routes-data";
 
 // GET /api/routes/:id — gibt eine einzelne Route zurück

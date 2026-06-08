@@ -26,7 +26,7 @@ export default function AboutPage() {
           <section>
             <h2 className="text-2xl font-semibold text-gray-800 mb-3">Technologie</h2>
             <p className="text-gray-600 leading-relaxed">
-              Diese Anwendung wurde im Rahmen des Praktikums "Multimediaapplikationen" entwickelt.
+              Diese Anwendung wurde im Rahmen des Praktikums &quot;Multimediaapplikationen&quot; entwickelt.
               Sie basiert auf Next.js mit Server-Side Rendering und TypeScript.
             </p>
           </section>

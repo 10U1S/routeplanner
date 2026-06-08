@@ -1,27 +1,20 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import type { Route, RouteFormProps, Difficulty, RouteCategory } from "@/types";
 
 export default function RouteForm({ onSubmit, onCancel, editingRoute }: RouteFormProps) {
-  const [name, setName] = useState("");
-  const [category, setCategory] = useState<RouteCategory>("Wandern");
-  const [difficulty, setDifficulty] = useState<Difficulty>("leicht");
-  const [distance, setDistance] = useState("");
-  const [duration, setDuration] = useState("");
-  const [description, setDescription] = useState("");
+  const [name, setName] = useState(editingRoute?.name ?? "");
+  const [category, setCategory] = useState<RouteCategory>(editingRoute?.category ?? "Wandern");
+  const [difficulty, setDifficulty] = useState<Difficulty>(editingRoute?.difficulty ?? "leicht");
+  const [distance, setDistance] = useState(
+    editingRoute ? String(editingRoute.distance) : ""
+  );
+  const [duration, setDuration] = useState(
+    editingRoute ? String(editingRoute.duration) : ""
+  );
+  const [description, setDescription] = useState(editingRoute?.description ?? "");
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  useEffect(() => {
-    if (editingRoute) {
-      setName(editingRoute.name);
-      setCategory(editingRoute.category);
-      setDifficulty(editingRoute.difficulty);
-      setDistance(String(editingRoute.distance));
-      setDuration(String(editingRoute.duration));
-      setDescription(editingRoute.description);
-    }
-  }, [editingRoute]);
 
   const nameError = name.length > 0 && name.length < 3;
   const distanceError = distance && (isNaN(Number(distance)) || Number(distance) <= 0);
