@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "name": "Waldweg Runde",
+    "distance": 80,
+    "duration": 75,
+    "difficulty": "leicht",
+    "category": "Wandern",
+    "description": "Schöne Runde durch den Wald mit flachen Wegen."
+  },
+  {
+    "id": 2,
+    "name": "Bergauf Challenge",
+    "distance": 8.7,
+    "duration": 120,
+    "difficulty": "schwer",
+    "category": "Wandern",
+    "description": "Anspruchsvolle Tour mit steilen Anstiegen."
+  },
+  {
+    "id": 4,
+    "name": "Alpenüberquerung",
+    "distance": 25,
+    "duration": 480,
+    "difficulty": "schwer",
+    "category": "Wandern",
+    "description": "Mehrtägige Tour über die Alpen mit atemberaubenden Ausblicken."
+  },
+  {
+    "id": 5,
+    "name": "Stadtradtour",
+    "distance": 12.5,
+    "duration": 90,
+    "difficulty": "mittel",
+    "category": "Radfahren",
+    "description": "Gemütliche Radtour durch die Innenstadt mit vielen Sehenswürdigkeiten."
+  },
+  {
+    "id": 6,
+    "name": "Klettersteig",
+    "distance": 3,
+    "duration": 180,
+    "difficulty": "schwer",
+    "category": "Klettern",
+    "description": "Herausfordernder Klettersteig mit gesicherten Passagen."
+  }
+]
