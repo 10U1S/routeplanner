@@ -1,5 +1,6 @@
 import { getRoute } from "@/app/actions";
 import Link from "next/link";
+import SaveButton from "@/components/SaveButton";
 
 export default async function RouteDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
