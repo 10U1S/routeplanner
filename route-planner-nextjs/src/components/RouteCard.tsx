@@ -86,7 +86,7 @@ export default function RouteCard({ route, onEdit, onDelete, index = 0 }: RouteC
 
   return (
     <div 
-      className={`group relative bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden card-hover animate-fade-in-up opacity-0 stagger-${(index % 6) + 1}`}
+      className={`group relative bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden card-hover animate-fade-in-up opacity-0 stagger-${(index % 6) + 1} dark:border-slate-700 dark:bg-slate-900 dark:shadow-slate-950/30`}
     >
       {/* Gradient accent bar at top */}
       <div className="h-1.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500" />
@@ -94,21 +94,21 @@ export default function RouteCard({ route, onEdit, onDelete, index = 0 }: RouteC
       <div className="p-5 flex flex-col h-full">
         {/* Header with icon and title */}
         <div className="flex items-start gap-3 mb-4">
-          <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-50 to-purple-50 flex items-center justify-center text-2xl border border-indigo-100/50">
+          <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-50 to-purple-50 flex items-center justify-center text-2xl border border-indigo-100/50 dark:from-slate-800 dark:to-indigo-950 dark:border-slate-700">
             {getCategoryIcon(route.category)}
           </div>
           <div className="flex-1 min-w-0">
-            <h3 className="text-lg font-bold text-gray-800 leading-tight group-hover:text-indigo-600 transition-colors line-clamp-2">
+            <h3 className="text-lg font-bold text-gray-800 leading-tight group-hover:text-indigo-600 transition-colors line-clamp-2 dark:text-slate-100 dark:group-hover:text-indigo-300">
               {route.name}
             </h3>
-            <p className="text-xs text-gray-400 mt-1 font-medium uppercase tracking-wider">
+            <p className="text-xs text-gray-400 mt-1 font-medium uppercase tracking-wider dark:text-slate-500">
               {route.category}
             </p>
           </div>
         </div>
 
         {/* Description */}
-        <p className="text-sm text-gray-500 mb-4 line-clamp-2 flex-1 leading-relaxed">
+        <p className="text-sm text-gray-500 mb-4 line-clamp-2 flex-1 leading-relaxed dark:text-slate-400">
           {route.description}
         </p>
 
@@ -125,18 +125,18 @@ export default function RouteCard({ route, onEdit, onDelete, index = 0 }: RouteC
 
         {/* Stats */}
         <div className="grid grid-cols-2 gap-3 mb-5">
-          <div className="bg-gradient-to-br from-indigo-50 to-indigo-100/50 rounded-xl p-3 text-center border border-indigo-100">
+          <div className="bg-gradient-to-br from-indigo-50 to-indigo-100/50 rounded-xl p-3 text-center border border-indigo-100 dark:from-indigo-500/10 dark:to-indigo-500/5 dark:border-indigo-400/20">
             <div className="text-lg font-bold text-indigo-700">{route.distance}</div>
             <div className="text-xs text-indigo-500 font-medium">km</div>
           </div>
-          <div className="bg-gradient-to-br from-emerald-50 to-emerald-100/50 rounded-xl p-3 text-center border border-emerald-100">
+          <div className="bg-gradient-to-br from-emerald-50 to-emerald-100/50 rounded-xl p-3 text-center border border-emerald-100 dark:from-emerald-500/10 dark:to-emerald-500/5 dark:border-emerald-400/20">
             <div className="text-lg font-bold text-emerald-700">{route.duration}</div>
             <div className="text-xs text-emerald-500 font-medium">Min.</div>
           </div>
         </div>
 
         {/* Actions */}
-        <div className="flex gap-2 pt-4 border-t border-gray-100">
+        <div className="flex gap-2 pt-4 border-t border-gray-100 dark:border-slate-700">
           <Link
             href={`/routen/${route.id}`}
             className="flex-1 px-4 py-2.5 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white rounded-xl text-sm font-semibold hover:from-indigo-700 hover:to-indigo-800 transition-all shadow-sm hover:shadow-md text-center"

@@ -29,11 +29,11 @@ export default function FilterBar({
   };
 
   return (
-    <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-sm border border-gray-100 p-6 mb-8">
+    <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-sm border border-gray-100 p-6 mb-8 dark:border-slate-700 dark:bg-slate-900/80">
       <div className="flex flex-col lg:flex-row gap-5">
         {/* Search */}
         <div className="flex-1">
-          <label htmlFor="search" className="block text-sm font-semibold text-gray-700 mb-2.5">
+          <label htmlFor="search" className="block text-sm font-semibold text-gray-700 mb-2.5 dark:text-slate-200">
             🔍 Routen suchen
           </label>
           <div className="relative">
@@ -42,10 +42,10 @@ export default function FilterBar({
               type="text"
               placeholder="Routenname oder Beschreibung..."
               onChange={(e) => onSearchChange(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:border-indigo-400 focus:bg-white focus:outline-none transition-all text-sm"
+              className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:border-indigo-400 focus:bg-white focus:outline-none transition-all text-sm dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:bg-slate-800"
             />
             <svg 
-              className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" 
+              className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 dark:text-slate-500" 
               fill="none" 
               stroke="currentColor" 
               viewBox="0 0 24 24"
@@ -57,7 +57,7 @@ export default function FilterBar({
 
         {/* Category Filter */}
         <div className="lg:w-auto">
-          <label className="block text-sm font-semibold text-gray-700 mb-2.5">
+          <label className="block text-sm font-semibold text-gray-700 mb-2.5 dark:text-slate-200">
             🎯 Kategorie
           </label>
           <div className="flex flex-wrap gap-2">
@@ -72,7 +72,7 @@ export default function FilterBar({
                   className={`relative px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
                     isActive
                       ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg shadow-indigo-500/25"
-                      : "bg-gray-50 text-gray-600 hover:bg-gray-100 border border-gray-200"
+                      : "bg-gray-50 text-gray-600 hover:bg-gray-100 border border-gray-200 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
                   }`}
                 >
                   <span className="flex items-center gap-1.5">
@@ -80,7 +80,7 @@ export default function FilterBar({
                     <span className={`text-xs px-1.5 py-0.5 rounded-full ${
                       isActive 
                         ? "bg-white/20 text-white" 
-                        : "bg-gray-200 text-gray-500"
+                        : "bg-gray-200 text-gray-500 dark:bg-slate-700 dark:text-slate-300"
                     }`}>
                       {count}
                     </span>

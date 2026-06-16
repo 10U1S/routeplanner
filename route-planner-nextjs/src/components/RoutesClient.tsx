@@ -115,7 +115,7 @@ export default function RoutesClient({ initialRoutes = [] }: { initialRoutes?: R
       )}
 
       {isLoading ? (
-        <div className="text-center text-gray-500 py-16">
+        <div className="text-center text-gray-500 py-16 dark:text-slate-400">
           <p>Laden...</p>
         </div>
       ) : (
@@ -133,12 +133,12 @@ export default function RoutesClient({ initialRoutes = [] }: { initialRoutes?: R
           </div>
 
           {filteredRoutes.length === 0 && (
-            <div className="text-center text-gray-500 py-16 bg-white rounded-xl shadow-md border-2 border-dashed border-gray-300">
+            <div className="text-center text-gray-500 py-16 bg-white rounded-xl shadow-md border-2 border-dashed border-gray-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400">
               <div className="text-6xl mb-4">🗺️</div>
-              <h3 className="text-xl font-semibold text-gray-700 mb-2">
+              <h3 className="text-xl font-semibold text-gray-700 mb-2 dark:text-slate-200">
                 Keine Routen gefunden
               </h3>
-              <p className="text-gray-500">
+              <p className="text-gray-500 dark:text-slate-400">
                 Versuchen Sie andere Filterkriterien.
               </p>
             </div>
