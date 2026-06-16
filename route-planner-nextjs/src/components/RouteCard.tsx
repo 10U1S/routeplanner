@@ -1,7 +1,10 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Route } from "@/types";
+
+const FAVORITES_KEY = "route-planner-favorites";
 
 interface RouteCardProps {
   route: Route;
@@ -11,6 +14,27 @@ interface RouteCardProps {
 }
 
 export default function RouteCard({ route, onEdit, onDelete, index = 0 }: RouteCardProps) {
+  const [isSaved, setIsSaved] = useState(false);
+
+  useEffect(() => {
+    const stored: Route[] = JSON.parse(localStorage.getItem(FAVORITES_KEY) || "[]");
+    setIsSaved(stored.some((r) => r.id === route.id));
+  }, [route.id]);
+
+  const handleToggleFavorite = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const stored: Route[] = JSON.parse(localStorage.getItem(FAVORITES_KEY) || "[]");
+    if (isSaved) {
+      const updated = stored.filter((r) => r.id !== route.id);
+      localStorage.setItem(FAVORITES_KEY, JSON.stringify(updated));
+      setIsSaved(false);
+    } else {
+      stored.push(route);
+      localStorage.setItem(FAVORITES_KEY, JSON.stringify(stored));
+      setIsSaved(true);
+    }
+  };
+
   const getDifficultyConfig = (difficulty: string) => {
     switch (difficulty) {
       case "leicht":
@@ -120,6 +144,17 @@ export default function RouteCard({ route, onEdit, onDelete, index = 0 }: RouteC
           >
             📋 Details
           </Link>
+          <button
+            onClick={handleToggleFavorite}
+            title={isSaved ? "Aus Favoriten entfernen" : "Zu Favoriten hinzufügen"}
+            className={`px-4 py-2.5 rounded-xl text-sm font-semibold transition-colors border ${
+              isSaved
+                ? "bg-amber-100 text-amber-700 border-amber-200 hover:bg-amber-200"
+                : "bg-gray-50 text-gray-500 border-gray-200 hover:bg-gray-100"
+            }`}
+          >
+            {isSaved ? "⭐" : "☆"}
+          </button>
           {onEdit && (
             <button
               onClick={() => onEdit(route)}
