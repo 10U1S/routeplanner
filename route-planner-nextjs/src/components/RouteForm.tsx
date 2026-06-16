@@ -62,19 +62,19 @@ export default function RouteForm({ onSubmit, onCancel, editingRoute }: RouteFor
     { value: "schwer", icon: "🔴", label: "Schwer", color: "rose" },
   ];
 
-  const inputClassName = "w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:border-indigo-400 focus:bg-white focus:outline-none transition-all text-sm";
+  const inputClassName = "w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:border-indigo-400 focus:bg-white focus:outline-none transition-all text-sm dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:bg-slate-800";
 
   return (
-    <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8 mb-8 animate-fade-in-up">
+    <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8 mb-8 animate-fade-in-up dark:border-slate-700 dark:bg-slate-900/90 dark:shadow-slate-950/40">
       <div className="flex items-center gap-3 mb-8">
         <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-lg shadow-lg shadow-indigo-500/25">
           {editingRoute ? "✏️" : "➕"}
         </div>
         <div>
-          <h2 className="text-xl font-bold text-gray-800">
+          <h2 className="text-xl font-bold text-gray-800 dark:text-slate-100">
             {editingRoute ? "Route bearbeiten" : "Neue Route hinzufügen"}
           </h2>
-          <p className="text-xs text-gray-400 mt-0.5">
+          <p className="text-xs text-gray-400 mt-0.5 dark:text-slate-500">
             {editingRoute ? "Ändere die Details deiner Route" : "Erstelle eine neue Route für die Community"}
           </p>
         </div>
@@ -83,7 +83,7 @@ export default function RouteForm({ onSubmit, onCancel, editingRoute }: RouteFor
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Name */}
         <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-2">
+          <label className="block text-sm font-semibold text-gray-700 mb-2 dark:text-slate-200">
             Routenname <span className="text-rose-500">*</span>
           </label>
           <input
@@ -106,7 +106,7 @@ export default function RouteForm({ onSubmit, onCancel, editingRoute }: RouteFor
 
         {/* Category Selection - Pill Buttons */}
         <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-3">
+          <label className="block text-sm font-semibold text-gray-700 mb-3 dark:text-slate-200">
             🎯 Kategorie
           </label>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -118,12 +118,12 @@ export default function RouteForm({ onSubmit, onCancel, editingRoute }: RouteFor
                 className={`relative flex flex-col items-center gap-2 p-4 rounded-xl border-2 transition-all duration-200 ${
                   category === cat.value
                     ? "border-indigo-500 bg-indigo-50 shadow-md shadow-indigo-500/10"
-                    : "border-gray-200 bg-white hover:border-gray-300 hover:bg-gray-50"
+                    : "border-gray-200 bg-white hover:border-gray-300 hover:bg-gray-50 dark:border-slate-700 dark:bg-slate-800 dark:hover:border-slate-600 dark:hover:bg-slate-700"
                 }`}
               >
                 <span className="text-2xl">{cat.icon}</span>
                 <span className={`text-sm font-semibold ${
-                  category === cat.value ? "text-indigo-700" : "text-gray-600"
+                  category === cat.value ? "text-indigo-700 dark:text-indigo-300" : "text-gray-600 dark:text-slate-300"
                 }`}>
                   {cat.label}
                 </span>
@@ -137,10 +137,10 @@ export default function RouteForm({ onSubmit, onCancel, editingRoute }: RouteFor
 
         {/* Difficulty Selection - Segmented Control */}
         <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-3">
+          <label className="block text-sm font-semibold text-gray-700 mb-3 dark:text-slate-200">
             📊 Schwierigkeit
           </label>
-          <div className="inline-flex rounded-xl border-2 border-gray-200 bg-gray-50 p-1">
+          <div className="inline-flex rounded-xl border-2 border-gray-200 bg-gray-50 p-1 dark:border-slate-700 dark:bg-slate-800">
             {difficulties.map((diff) => (
               <button
                 key={diff.value}
@@ -148,8 +148,8 @@ export default function RouteForm({ onSubmit, onCancel, editingRoute }: RouteFor
                 onClick={() => setDifficulty(diff.value)}
                 className={`relative flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 ${
                   difficulty === diff.value
-                    ? "bg-white text-gray-800 shadow-sm"
-                    : "text-gray-500 hover:text-gray-700"
+                    ? "bg-white text-gray-800 shadow-sm dark:bg-slate-900 dark:text-slate-100"
+                    : "text-gray-500 hover:text-gray-700 dark:text-slate-400 dark:hover:text-slate-200"
                 }`}
               >
                 <span>{diff.icon}</span>
@@ -162,7 +162,7 @@ export default function RouteForm({ onSubmit, onCancel, editingRoute }: RouteFor
         {/* Distance & Duration */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 mb-2 dark:text-slate-200">
               Distanz (km) <span className="text-rose-500">*</span>
             </label>
             <div className="relative">
@@ -175,7 +175,7 @@ export default function RouteForm({ onSubmit, onCancel, editingRoute }: RouteFor
                 min="0"
                 className={`${inputClassName} pr-12`}
               />
-              <span className="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-gray-400 font-medium">
+              <span className="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-gray-400 font-medium dark:text-slate-500">
                 km
               </span>
             </div>
@@ -190,7 +190,7 @@ export default function RouteForm({ onSubmit, onCancel, editingRoute }: RouteFor
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 mb-2 dark:text-slate-200">
               Dauer (Minuten) <span className="text-rose-500">*</span>
             </label>
             <div className="relative">
@@ -202,7 +202,7 @@ export default function RouteForm({ onSubmit, onCancel, editingRoute }: RouteFor
                 min="0"
                 className={`${inputClassName} pr-16`}
               />
-              <span className="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-gray-400 font-medium">
+              <span className="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-gray-400 font-medium dark:text-slate-500">
                 Minuten
               </span>
             </div>
@@ -219,7 +219,7 @@ export default function RouteForm({ onSubmit, onCancel, editingRoute }: RouteFor
 
         {/* Description */}
         <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-2">
+          <label className="block text-sm font-semibold text-gray-700 mb-2 dark:text-slate-200">
             Beschreibung
           </label>
           <textarea
@@ -251,7 +251,7 @@ export default function RouteForm({ onSubmit, onCancel, editingRoute }: RouteFor
           <button
             type="button"
             onClick={onCancel}
-            className="px-6 py-3.5 bg-gray-100 text-gray-700 rounded-xl font-semibold hover:bg-gray-200 transition-colors border border-gray-200"
+            className="px-6 py-3.5 bg-gray-100 text-gray-700 rounded-xl font-semibold hover:bg-gray-200 transition-colors border border-gray-200 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
           >
             Abbrechen
           </button>
