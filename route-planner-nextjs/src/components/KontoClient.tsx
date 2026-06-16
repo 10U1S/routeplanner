@@ -17,6 +17,7 @@ const DEFAULT_PROFILE: Profile = { username: "", age: "", hobbies: [] };
 const STORAGE_KEY_PROFILE   = "routeplanner_profile";
 const STORAGE_KEY_EARNED    = "routeplanner_completed";
 const STORAGE_KEY_IMAGE     = "routeplanner_profileimage";
+const STORAGE_KEY_BANNER    = "routeplanner_bannerimage";
 
 // ─── Config ───────────────────────────────────────────────────────────────────
 
@@ -229,8 +230,10 @@ function SelectableRouteCard({
 // ─── Main Component ───────────────────────────────────────────────────────────
 
 export default function KontoClient({ allRoutes }: { allRoutes: Route[] }) {
-  const [profile, setProfile]         = useState<Profile>(DEFAULT_PROFILE);
+  const [profile, setProfile]           = useState<Profile>(DEFAULT_PROFILE);
   const [profileImage, setProfileImage] = useState<string>("");
+  const [bannerImage, setBannerImage]   = useState<string>("");
+  const bannerInputRef = useRef<HTMLInputElement>(null);
   const [earnedIds, setEarnedIds]     = useState<number[]>([]);
   const [selectedIds, setSelectedIds] = useState<number[]>([]);
   const [editing, setEditing]         = useState(false);
@@ -245,6 +248,8 @@ export default function KontoClient({ allRoutes }: { allRoutes: Route[] }) {
       if (p) setProfile(JSON.parse(p));
       const img = localStorage.getItem(STORAGE_KEY_IMAGE);
       if (img) setProfileImage(img);
+      const banner = localStorage.getItem(STORAGE_KEY_BANNER);
+      if (banner) setBannerImage(banner);
       const e = localStorage.getItem(STORAGE_KEY_EARNED);
       const parsed: number[] = e ? JSON.parse(e) : [];
       setEarnedIds(parsed);
@@ -263,6 +268,21 @@ export default function KontoClient({ allRoutes }: { allRoutes: Route[] }) {
   function handleImageChange(base64: string) {
     setProfileImage(base64);
     localStorage.setItem(STORAGE_KEY_IMAGE, base64);
+  }
+
+  // Persist banner image
+  function handleBannerChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (typeof reader.result === "string") {
+        setBannerImage(reader.result);
+        localStorage.setItem(STORAGE_KEY_BANNER, reader.result);
+      }
+    };
+    reader.readAsDataURL(file);
+    e.target.value = "";
   }
 
   function startEditing() { setDraft({ ...profile }); setEditing(true); }
@@ -307,8 +327,29 @@ export default function KontoClient({ allRoutes }: { allRoutes: Route[] }) {
 
       {/* ── Profile Card ─────────────────────────────────────────────────────── */}
       <div className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
-        <div className="h-28 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 relative">
-          <div className="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_at_top_left,_white_0%,_transparent_60%)]" />
+        {/* ── Banner ── */}
+        <div
+          className="h-28 relative cursor-pointer group overflow-hidden"
+          onClick={() => bannerInputRef.current?.click()}
+          title="Banner ändern"
+        >
+          {bannerImage ? (
+            <img src={bannerImage} alt="Banner" className="w-full h-full object-cover" />
+          ) : (
+            <div className="w-full h-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+              <div className="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_at_top_left,_white_0%,_transparent_60%)]" />
+            </div>
+          )}
+          {/* Hover overlay */}
+          <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <span className="text-white text-sm font-semibold">Banner ändern</span>
+          </div>
+          <input ref={bannerInputRef} type="file" accept="image/*" className="hidden" onChange={handleBannerChange} />
         </div>
 
         <div className="px-8 pb-8">
