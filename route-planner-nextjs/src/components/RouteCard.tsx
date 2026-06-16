@@ -3,8 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Route } from "@/types";
-
-const FAVORITES_KEY = "route-planner-favorites";
+import { FAVORITES_KEY } from "@/lib/constants";
 
 interface RouteCardProps {
   route: Route;

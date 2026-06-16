@@ -4,8 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import RouteCard from "@/components/RouteCard";
 import { Route } from "@/types";
-
-const FAVORITES_KEY = "route-planner-favorites";
+import { FAVORITES_KEY } from "@/lib/constants";
 
 export default function FavoritenPage() {
   const [favorites, setFavorites] = useState<Route[]>([]);

@@ -2,8 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Route } from "@/types";
-
-const FAVORITES_KEY = "route-planner-favorites";
+import { FAVORITES_KEY } from "@/lib/constants";
 
 interface SaveButtonProps {
   route: Route;
