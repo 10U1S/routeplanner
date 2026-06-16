@@ -45,6 +45,7 @@ export default function RootLayout({
                 {[
                   { href: "/", label: "Start", icon: "🏠" },
                   { href: "/routen", label: "Routen", icon: "🥾" },
+                  { href: "/favoriten", label: "Favoriten", icon: "⭐" },
                   { href: "/about", label: "Über uns", icon: "ℹ️" },
                   { href: "/konto", label: "Konto", icon: "👤" },
                 ].map((item) => (

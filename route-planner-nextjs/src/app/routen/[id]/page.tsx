@@ -1,5 +1,6 @@
 import { getRoute } from "@/app/actions";
 import Link from "next/link";
+import SaveButton from "@/components/SaveButton";
 
 export default async function RouteDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -128,9 +129,17 @@ export default async function RouteDetailPage({ params }: { params: Promise<{ id
                 <span>🗺️</span>
                 <span>Route planen</span>
               </button>
-              <button className="px-6 py-3.5 bg-gray-100 text-gray-700 rounded-xl font-semibold hover:bg-gray-200 transition-colors border border-gray-200">
-                ⭐ Speichern
-              </button>
+              <SaveButton
+                route={{
+                  id: route.id,
+                  name: route.name,
+                  distance: route.distance,
+                  duration: route.duration,
+                  difficulty: route.difficulty,
+                  category: route.category,
+                  description: route.description,
+                }}
+              />
             </div>
           </div>
         </div>
